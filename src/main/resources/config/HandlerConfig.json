@@ -1,0 +1,38 @@
+[
+  {
+    "source": "src",
+    "target": [
+      "parallelHandler"
+    ],
+    "handlerClassName": "com.prr.vertx.bean.SrcHandler"
+  },
+  {
+    "source": "msgg",
+    "target": [
+      "parallelHandler"
+    ],
+    "handlerClassName": "com.prr.vertx.bean.MsgHandler"
+  },
+  {
+    "source": "parallelHandler",
+    "target": [
+      "endController"
+    ],
+    "handlerClassName": "com.prr.vertx.handler.ParallelHandler",
+    "subHandlers": [
+      {
+        "source": "AbcResponseHandler",
+        "handlerClassName": "com.prr.vertx.bean.AbcResponseHandler"
+      },
+      {
+        "source": "XyzResponseHandler",
+        "handlerClassName": "com.prr.vertx.bean.XyzResponseHandler"
+      }
+    ],
+    "mergerClassName": "com.prr.vertx.bean.StringMerger"
+  },
+  {
+    "source": "endController",
+    "handlerClassName": "com.prr.vertx.bean.EndHandler"
+  }
+]
